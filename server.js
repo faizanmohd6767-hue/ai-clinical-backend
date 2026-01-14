@@ -1,5 +1,5 @@
-import express from "express";
-import cors from "cors";
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
 app.use(cors());
@@ -10,7 +10,10 @@ app.post("/ai-differential", (req, res) => {
 
   let differentials = [];
 
-  if (complaint?.toLowerCase().includes("fever") || temperature >= 38.7) {
+  if (
+    (complaint && complaint.toLowerCase().includes("fever")) ||
+    temperature >= 38.7
+  ) {
     differentials.push("Acute febrile illness (viral > bacterial)");
     differentials.push("Dengue / malaria (seasonal consideration)");
   }
